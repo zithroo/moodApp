@@ -29,9 +29,10 @@
                 text: "心情小語"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-            Label:
-                text: "圖片顯示"
-                pos_hint: {'center_x': 0.5}
+            Image:
+                source: 'image/test_picture.jpg'
+                allow_stretch: True
+                keep_ratio: True
             Button:
                 text: "再次測驗"
                 pos_hint: {'center_x': 0.5}

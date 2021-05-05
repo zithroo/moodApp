@@ -5,12 +5,7 @@
     background_color: utils.get_color_from_hex('#c0c0c0')
 
 <MyLayout>
-    canvas.before:
-        Color:
-            rgba: utils.get_color_from_hex('#ffffe0')
-        Rectangle:
-            pos: self.pos
-            size: self.size
+
     BoxLayout:
         orientation: "vertical"
         size: root.width, root.height
@@ -31,21 +26,29 @@
             padding: 10
             spacing: 10
             Button:
+                id: "none"
                 text: "沒有經歷"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
+                on_press: root.get_answer(0)
             Button:
+                id: "seldom"
                 text: "很少發生"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
+                on_press: root.get_answer(1)
             Button:
+                id: "sometimes"
                 text: "偶爾"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
+                on_press: root.get_answer(2)
             Button:
+                id: "always"
                 text: "總是"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
+                on_press: root.get_answer(3)
             
            
         

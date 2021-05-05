@@ -7,12 +7,15 @@ LabelBase.register('Roboto', 'chinese.msyh.ttf')
 
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
-import kivy.utils 
-#from kivy.uix.image import Image
+import kivy.utils
+with open('./question/question.txt', 'r', encoding="utf-8") as f:
+    questions = f.read().splitlines()
+
+# from kivy.uix.image import Image
+# from kivy.properties import ObjectProperty
 
 # homepage = Builder.load_file('home.kv')
 question = Builder.load_file('question.kv')
@@ -21,8 +24,13 @@ Window.size = (360, 600)
 class MyLayout(Widget):
     def __init__(self):
         super().__init__()
-    
-
+    def get_answer(self, value):
+        try:
+            int(value)
+            print(value)
+            
+        except:
+            print("wrong value: " + value)
 class MyApp(App):
     def build(self):
         Window.clearcolor = kivy.utils.get_color_from_hex('#ffffe0')
