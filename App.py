@@ -11,8 +11,12 @@ from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
+import kivy.utils 
+#from kivy.uix.image import Image
 
-homepage = Builder.load_file('home.kv')
+# homepage = Builder.load_file('home.kv')
+question = Builder.load_file('question.kv')
+# result = Builder.load_file('result.kv')
 Window.size = (360, 600)
 class MyLayout(Widget):
     def __init__(self):
@@ -21,14 +25,17 @@ class MyLayout(Widget):
 
 class MyApp(App):
     def build(self):
+        Window.clearcolor = kivy.utils.get_color_from_hex('#ffffe0')
         return MyLayout()
 
 if __name__ == '__main__':
     MyApp().run()
 
-
 '''
-self.add_widget(Label(text='密碼: '))
-self.password = TextInput(multiline=False)
-self.press = Button(text = 'Click me')
+    canvas.before:
+        Color:
+            rgba: utils.get_color_from_hex('#ffffe0')
+        Rectangle:
+            pos: self.pos
+            size: self.size
 '''

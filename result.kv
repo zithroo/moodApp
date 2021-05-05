@@ -9,11 +9,11 @@
     BoxLayout:
         orientation: "vertical"
         size: root.width, root.height
-        padding: 20
+        padding: 30
         Label:
             text: "說明語"
             font_size: 32
-            size_hint: (1, 0.8)
+            size_hint: (1, 0.5)
             canvas.before:
                 Color:
                     rgba: utils.get_color_from_hex('#604700')
@@ -22,12 +22,20 @@
                     pos: self.pos
         BoxLayout:
             orientation: "vertical"
-            Label:
-
+            size: root.width, root.height
+            padding: 10
+            spacing: 10
             Button:
-                text: "開始測驗"
+                text: "心情小語"
                 pos_hint: {'center_x': 0.5}
-                size_hint: (0.5, 0.5)
+                size_hint: (0.7, 0.3)
             Label:
+                text: "圖片顯示"
+                pos_hint: {'center_x': 0.5}
+            Button:
+                text: "再次測驗"
+                pos_hint: {'center_x': 0.5}
+                size_hint: (0.7, 0.1)
+            
            
         

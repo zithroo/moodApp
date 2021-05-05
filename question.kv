@@ -1,0 +1,51 @@
+#:import utils kivy.utils
+<Button>
+    color: (1,1,1,1)
+    background_normal: ""
+    background_color: utils.get_color_from_hex('#c0c0c0')
+
+<MyLayout>
+    canvas.before:
+        Color:
+            rgba: utils.get_color_from_hex('#ffffe0')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 30
+        Label:
+            text: "題目"
+            font_size: 32
+            size_hint: (1, 0.5)
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex('#604700')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width, root.height
+            padding: 10
+            spacing: 10
+            Button:
+                text: "沒有經歷"
+                pos_hint: {'center_x': 0.5}
+                size_hint: (0.7, 0.3)
+            Button:
+                text: "很少發生"
+                pos_hint: {'center_x': 0.5}
+                size_hint: (0.7, 0.3)
+            Button:
+                text: "偶爾"
+                pos_hint: {'center_x': 0.5}
+                size_hint: (0.7, 0.3)
+            Button:
+                text: "總是"
+                pos_hint: {'center_x': 0.5}
+                size_hint: (0.7, 0.3)
+            
+           
+        
