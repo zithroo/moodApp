@@ -28,13 +28,14 @@ class Home(Screen):
     pass
 
 class Question(Screen):
-    def get_answer(self, value):
-        try:
-            int(value)
-            print(value)
-            
-        except:
-            print("wrong value: " + value)
+    now_question = questions[0]
+    def get_answer(self, id):
+        print(id)
+        for i in range(0, 4):
+            self.ids['answer_' + str(i)].background_color = (192/255.0,192/255.0,192/255.0,1)
+        self.ids[id].background_color = (128/255.0, 42/255.0, 42/255.0, 1)
+    def submit(self):
+        pass
 
 class Result(Screen):
     pass

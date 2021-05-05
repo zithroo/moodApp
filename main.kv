@@ -10,8 +10,8 @@
         size: root.width, root.height
         padding: 20
         Label:
-            text: "說明語"
-            font_size: 32
+            text: '''生活的壓力是否\n讓你喘不過氣呢?\n接下來就讓這App\n帶給你一些正能量吧!'''
+            font_size: 28
             size_hint: (1, 0.8)
             canvas.before:
                 Color:
@@ -38,8 +38,10 @@
         size: root.width, root.height
         padding: 30
         Label:
-            text: "題目"
-            font_size: 32
+            id: 'name_question'
+            text: root.now_question
+            multiline: True
+            font_size: 20
             size_hint: (1, 0.5)
             canvas.before:
                 Color:
@@ -53,36 +55,35 @@
             padding: 10
             spacing: 10
             Button:
-                id: "none"
+                id: answer_0
                 text: "沒有經歷"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer(0)
+                on_press: root.get_answer("answer_0")
             Button:
-                id: "seldom"
+                id: answer_1
                 text: "很少發生"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer(1)
+                on_press: root.get_answer("answer_1")
             Button:
-                id: "sometimes"
+                id: answer_2
                 text: "偶爾"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer(2)
+                on_press: root.get_answer("answer_2")
             Button:
-                id: "always"
+                id: answer_3
                 text: "總是"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer(3)
+                on_press: root.get_answer("answer_3")
             Button:
-                text: "結果"
+                id: send
+                text: "下一題"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: 
-                    root.manager.current = 'result'
-                    root.manager.transition.direction = 'left'
+                on_press: root.submit()
 <Result>:
     name: 'result'
     BoxLayout:
