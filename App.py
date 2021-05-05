@@ -16,14 +16,18 @@ with open('./question/question.txt', 'r', encoding="utf-8") as f:
 
 # from kivy.uix.image import Image
 # from kivy.properties import ObjectProperty
-
-# homepage = Builder.load_file('home.kv')
+'''
+homepage = Builder.load_file('home.kv')
 question = Builder.load_file('question.kv')
-# result = Builder.load_file('result.kv')
+result = Builder.load_file('result.kv')
+'''
+main = Builder.load_file('main.kv')
 Window.size = (360, 600)
-class MyLayout(Widget):
-    def __init__(self):
-        super().__init__()
+
+class Home(Screen):
+    pass
+
+class Question(Screen):
     def get_answer(self, value):
         try:
             int(value)
@@ -31,10 +35,18 @@ class MyLayout(Widget):
             
         except:
             print("wrong value: " + value)
+
+class Result(Screen):
+    pass
+
 class MyApp(App):
     def build(self):
         Window.clearcolor = kivy.utils.get_color_from_hex('#ffffe0')
-        return MyLayout()
+        sm = ScreenManager()
+        sm.add_widget(Home())
+        sm.add_widget(Question())
+        sm.add_widget(Result())
+        return sm
 
 if __name__ == '__main__':
     MyApp().run()
