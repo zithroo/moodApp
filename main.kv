@@ -38,8 +38,8 @@
         size: root.width, root.height
         padding: 30
         Label:
-            id: 'name_question'
-            text: root.now_question
+            id: name_question
+            text:
             multiline: True
             font_size: 20
             size_hint: (1, 0.5)
@@ -59,25 +59,25 @@
                 text: "沒有經歷"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer("answer_0")
+                on_press: root.get_answer(0)
             Button:
                 id: answer_1
                 text: "很少發生"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer("answer_1")
+                on_press: root.get_answer(1)
             Button:
                 id: answer_2
                 text: "偶爾"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer("answer_2")
+                on_press: root.get_answer(2)
             Button:
                 id: answer_3
                 text: "總是"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.3)
-                on_press: root.get_answer("answer_3")
+                on_press: root.get_answer(3)
             Button:
                 id: send
                 text: "下一題"
