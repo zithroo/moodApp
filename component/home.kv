@@ -1,18 +1,12 @@
-#:import utils kivy.utils
-<Button>
-    color: (1,1,1,1)
-    background_normal: ""
-    background_color: utils.get_color_from_hex('#c0c0c0')
-
-<MyLayout>
-
+<Home>:
+    name: 'home'
     BoxLayout:
         orientation: "vertical"
         size: root.width, root.height
         padding: 20
         Label:
-            text: "說明語"
-            font_size: 32
+            text: '''生活的壓力是否\n讓你喘不過氣呢?\n接下來就讓這App\n帶給你一些正能量吧!'''
+            font_size: 28
             size_hint: (1, 0.8)
             canvas.before:
                 Color:
@@ -28,6 +22,8 @@
                 text: "開始測驗"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.5, 0.5)
+                on_press: 
+                    print(root.manager)
+                    root.manager.current = 'question'
+                    root.manager.transition.direction = 'left'
             Label:
-           
-        

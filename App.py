@@ -20,13 +20,24 @@ main = Builder.load_file('main.kv')
 
 with open('./question/question.txt', 'r', encoding="utf-8") as f:
     questions = f.read().splitlines()
-
+'''
+    引入問題檔案
+'''
 Window.size = (360, 600) #應該要 3:5
 
 class User():
     '''
-        使用者資訊
+        使用者資訊，提供問卷結果的分級和資料紀錄
+
+        :Events:
+            `add_score`: (score, index)
+            將每題提交的分數加入
+            `show_score`: ()
+            顯示所有的分數及總分
+            `rank`: ()
+            將總分進行分級並回饋
     '''
+
     def __init__(self):
         self.total_score = None
         self.scores = []
@@ -65,13 +76,25 @@ class User():
             rank = '第五級'
         print('In User.rank = ' + rank)
         sc = App.get_running_app().root.get_screen('result') # 取得Screen
+        # print(type(App.get_running_app().root))
         sc.ids.name_result.text = rank
 
 class Home(Screen):
     pass
 
 class Question(Screen):
-    
+    '''
+        填寫問題的頁面，用以提交問題及將頁面轉至Result
+
+        :Events:
+            `get_answer`: (value)
+            儲存使用者按下的答案按鈕，並將選取的答案變色，若是已經到最後一題，
+            則改變提交按鈕的文字為'結果'
+            `submit`: ()
+            提交每一題的答案至User，並跳到下一題
+            `show_result`: ()
+            將頁面跳至Result，並呼叫User顯示結果
+    '''
     def __init__(self):
         super().__init__()
         self.current_answer = -1
@@ -112,10 +135,8 @@ class Question(Screen):
         user.show_scores()
         
 
-
 class Result(Screen):
-    def show_rank(self, rank):
-        print("In Result rank:" + rank)
+    pass
 
 
 class MyApp(App):

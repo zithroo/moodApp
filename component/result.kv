@@ -1,17 +1,11 @@
-#:import utils kivy.utils
-<Button>
-    color: (1,1,1,1)
-    background_normal: ""
-    background_color: utils.get_color_from_hex('#c0c0c0')
-
-<MyLayout>
-
+<Result>:
+    name: 'result'
     BoxLayout:
         orientation: "vertical"
         size: root.width, root.height
         padding: 30
         Label:
-            text: "說明語"
+            text: "這是結果"
             font_size: 32
             size_hint: (1, 0.5)
             canvas.before:
@@ -25,10 +19,18 @@
             size: root.width, root.height
             padding: 10
             spacing: 10
-            Button:
-                text: "心情小語"
-                pos_hint: {'center_x': 0.5}
-                size_hint: (0.7, 0.3)
+            Label:
+                id: name_result
+                text: "說明語"
+                font_size: 32
+                size_hint: (1, 0.5)
+                canvas.before:
+                    Color:
+                        rgba: utils.get_color_from_hex('#604700')
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                
             Image:
                 source: 'image/test_picture.jpg'
                 allow_stretch: True
@@ -37,6 +39,6 @@
                 text: "再次測驗"
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.1)
-            
-           
-        
+                on_press: 
+                    root.manager.current = 'home'
+                    root.manager.transition.direction = 'right'
