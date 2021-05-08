@@ -6,7 +6,7 @@
 ## 檔案架構
 ```
 moodApp
-├─App.py
+├─app.py
 ├─main.kv
 ├─component
 │   ├─home.kv
