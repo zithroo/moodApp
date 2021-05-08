@@ -1,3 +1,5 @@
+<Button>
+    pos_hint: {'center_x': 0.5}
 <Question>:
     name: 'question'
     BoxLayout:
@@ -24,31 +26,35 @@
             Button:
                 id: answer_0
                 text: "沒有經歷"
-                pos_hint: {'center_x': 0.5}
-                size_hint: (0.7, 0.3)
+                size_hint: (0.7, 0.5)
                 on_press: root.get_answer(0)
             Button:
                 id: answer_1
                 text: "很少發生"
-                pos_hint: {'center_x': 0.5}
-                size_hint: (0.7, 0.3)
+                size_hint: (0.7, 0.5)
                 on_press: root.get_answer(1)
             Button:
                 id: answer_2
                 text: "偶爾"
-                pos_hint: {'center_x': 0.5}
-                size_hint: (0.7, 0.3)
+                size_hint: (0.7, 0.5)
                 on_press: root.get_answer(2)
             Button:
                 id: answer_3
                 text: "總是"
-                pos_hint: {'center_x': 0.5}
-                size_hint: (0.7, 0.3)
+                size_hint: (0.7, 0.5)
                 on_press: root.get_answer(3)
-            Button:
-                id: send
-                text: "下一題"
-                pos_hint: {'center_x': 0.5}
-                size_hint: (0.7, 0.3)
-                on_press: 
-                    root.submit()
+            GridLayout:
+                cols: 2
+                spacing: 10
+                size_hint: (1, 0.5)
+                Button:
+                    id: previous
+                    text: "回首頁"
+                    size_hint: (0.7, 0.3)
+                    on_press: root.goto_previous()
+                Button:
+                    id: send
+                    text: "下一題"
+                    size_hint: (0.7, 0.3)
+                    on_press: 
+                        root.submit()

@@ -32,6 +32,7 @@
                         pos: self.pos
                 
             Image:
+                id: name_image
                 source: 'image/test_picture.jpg'
                 allow_stretch: True
                 keep_ratio: True
@@ -40,6 +41,7 @@
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.1)
                 on_press: 
-                    root.manager.current = 'home'
+                    
                     root.restart()
+                    root.manager.current = 'home'
                     root.manager.transition.direction = 'right'
