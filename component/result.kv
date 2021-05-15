@@ -5,7 +5,7 @@
         size: root.width, root.height
         padding: 30
         Label:
-            text: "這是結果"
+            text: "這是根據測驗結果所選擇的小語和圖片"
             font_size: 32
             size_hint: (1, 0.5)
             canvas.before:
@@ -41,7 +41,5 @@
                 pos_hint: {'center_x': 0.5}
                 size_hint: (0.7, 0.1)
                 on_press: 
-                    
                     root.restart()
-                    root.manager.current = 'home'
-                    root.manager.transition.direction = 'right'
+                    

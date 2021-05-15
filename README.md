@@ -25,11 +25,14 @@ moodApp
 │   ├─class_3
 │   ├─class_4
 │   ├─class_5
+├─user
+│   ├─record.txt
 ├─design
 │   ├─home.img
 │   ├─question.img
 │   ├─result.img
 │   ├─計分說明.img
+
 ```
 ## 資料庫
 ```
