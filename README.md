@@ -14,6 +14,7 @@ moodApp
 │   ├─home.kv
 │   ├─question.kv
 │   ├─result.kv
+│   ├─record.kv
 ├─question
 │   ├─question.txt
 │   ├─test.txt
@@ -27,6 +28,7 @@ moodApp
 │   ├─class_5
 ├─user
 │   ├─record.txt
+│   ├─record.jpg
 ├─design
 │   ├─home.img
 │   ├─question.img

@@ -16,7 +16,10 @@ from kivy.properties import ObjectProperty
 
 import random
 import time
-
+'''
+    引入繪圖模塊
+'''
+import matplotlib.pyplot as plt
 '''
     引入kivy模塊
 '''
@@ -50,6 +53,8 @@ class User():
             `get_image`: (rank_nuber)
             return str
             依照rank_number提供隨機的檔案路徑
+            `record`: (time, total_score)
+            將時間和總分數寫入./user/record.txt
             `reset`: ()
             重置資料
     '''
@@ -79,7 +84,7 @@ class User():
             return
         else:
             print('Success! total input: %d' %(scores_length))
-        self.time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        self.time = time.strftime("%m-%d %H:%M:%S", time.localtime())
         sum = 0
         for score in self.scores:
             sum += score
@@ -149,8 +154,58 @@ class User():
 class Home(Screen):
     '''
         首頁，將頁面轉至Quesiotion
+        :Events:
+            `show_record`: ()
+            顯示最近五次紀錄的圖表
     '''
-    pass
+    def __init__(self):
+        super().__init__()
+
+    def show_record(self):
+        print("home.show_record()")
+        try:
+            with open('./user/record.txt', 'r', encoding="utf-8") as f:
+                records = f.readlines()
+            data_x = []
+            data_y = []
+            
+            length = len(records)
+            if(length > 5):
+                for line in range(length - 5, length):
+                    record = records[line].split('/')
+                    data_x.append(record[0])
+                    data_y.append(int(record[1].strip()))
+            else:
+                for line in records:
+                    record = line.split('/')
+                    data_x.append(record[0])
+                    data_y.append(int(record[1].strip()))
+            
+            print(data_x)
+            print(data_y)
+            bottom = min(data_y) - (min(data_y) % 5)
+            top = max(data_y) + (5 - (max(data_y) %5))
+            plt.plot(data_x, data_y, 'b-*') #畫線
+            plt.title("Record", fontsize=24) #圖表標題
+            plt.xlabel("time", fontsize=16) #x軸標題
+            plt.ylim(bottom, top)
+            plt.ylabel("Mood index", fontsize=20) #y軸標題
+            try:
+                os.remove('./user/record.jpg')
+            except OSError as e:
+                print(e)
+            else:
+                print("File is deleted successfully")
+            plt.savefig('./user/record.jpg')
+            # plt.show() #顯示繪製的圖形
+            sc = App.get_running_app().root.get_screen('record') # 取得Screen
+            sc.ids.name_image.reload()
+
+        except FileNotFoundError:
+            print("please check the folder ./user")
+            print("there may be no file named record.txt")
+            exit(1)
+
 
 class Question(Screen):
     '''
@@ -276,6 +331,11 @@ class Result(Screen):
         user.reset()
         question_screen.reset()
 
+class Record(Screen):
+    '''
+        顯示紀錄的頁面
+    '''
+    pass
 
 class MoodApp(App):
     '''
@@ -288,6 +348,7 @@ class MoodApp(App):
         sm.add_widget(Home())
         sm.add_widget(Question())
         sm.add_widget(Result())
+        sm.add_widget(Record())
         return sm
 
 if __name__ == '__main__':
