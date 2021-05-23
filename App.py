@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 main = Builder.load_file('main.kv')
 
 try:
-    with open('./question/test.txt', 'r', encoding="utf-8") as f:
+    with open('./question/question.txt', 'r', encoding="utf-8") as f:
         questions = f.read().splitlines()
 except FileNotFoundError:
     print("please check the folder ./question")

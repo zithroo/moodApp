@@ -1,16 +1,17 @@
 # moodApp
 
-## 使用前必須安裝kivy
+## 使用前必須安裝模塊
     pip install kivy
+    pip install matplotlib
 
 ## 檔案架構
 ```
 moodApp
 ├─app.py
 ├─main.kv
-├─component
-├─chinese.msyh
 ├─README.ME
+├─chinese.msyh
+├─component
 │   ├─home.kv
 │   ├─question.kv
 │   ├─result.kv
