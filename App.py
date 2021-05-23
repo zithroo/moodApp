@@ -345,7 +345,7 @@ class MoodApp(App):
         加入ScreenManager，以及三個Screen
     '''
     def build(self):
-        Window.clearcolor = kivy.utils.get_color_from_hex('#ffffe0')
+        Window.clearcolor = kivy.utils.get_color_from_hex('#ffffce')
         sm = ScreenManager()
         sm.add_widget(Home())
         sm.add_widget(Question())

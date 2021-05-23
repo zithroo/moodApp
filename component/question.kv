@@ -1,5 +1,6 @@
 <Button>
     pos_hint: {'center_x': 0.5}
+
 <Question>:
     name: 'question'
     BoxLayout:
@@ -21,40 +22,57 @@
         BoxLayout:
             orientation: "vertical"
             size: root.width, root.height
-            padding: 10
-            spacing: 10
-            Button:
-                id: answer_0
-                text: "沒有經歷"
-                size_hint: (0.7, 0.5)
-                on_press: root.get_answer(0)
-            Button:
-                id: answer_1
-                text: "很少發生"
-                size_hint: (0.7, 0.5)
-                on_press: root.get_answer(1)
-            Button:
-                id: answer_2
-                text: "偶爾"
-                size_hint: (0.7, 0.5)
-                on_press: root.get_answer(2)
-            Button:
-                id: answer_3
-                text: "總是"
-                size_hint: (0.7, 0.5)
-                on_press: root.get_answer(3)
+            padding: 20
+            spacing: 20
             GridLayout:
                 cols: 2
-                spacing: 10
-                size_hint: (1, 0.5)
+                size_hint: (0.8, 0.85)
+                pos_hint: {'center_x': 0.5}
+                spacing: 30
+                Label:
+                    size_hint: (1, 0.5)
+                Label:
+                    size_hint: (1, 0.5)
+                Button:
+                    id: answer_0
+                    text: "沒有經歷"
+                    font_size: 20
+                    on_press: root.get_answer(0)
+                Button:
+                    id: answer_1
+                    text: "很少發生"
+                    font_size: 20
+                    on_press: root.get_answer(1)
+                Label:
+                    size_hint: (1, 0.5)
+                Label:
+                    size_hint: (1, 0.5)
+                Button:
+                    id: answer_2
+                    text: "偶爾"
+                    font_size: 20
+                    on_press: root.get_answer(2)
+                Button:
+                    id: answer_3
+                    text: "總是"
+                    font_size: 20
+                    on_press: root.get_answer(3)
+                Label:
+                    size_hint: (1, 0.5)
+                Label:
+                    size_hint: (1, 0.5)
+            GridLayout:
+                cols: 2
+                size_hint: (1, 0.15)
+                spacing: 30
                 Button:
                     id: previous
                     text: "回首頁"
-                    size_hint: (0.7, 0.3)
                     on_press: root.goto_previous()
+                    background_color: utils.get_color_from_hex('#3F5623')
                 Button:
                     id: send
                     text: "下一題"
-                    size_hint: (0.7, 0.3)
+                    background_color: utils.get_color_from_hex('#3F5623')
                     on_press: 
                         root.submit()
