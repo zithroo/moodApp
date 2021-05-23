@@ -37,7 +37,8 @@ except FileNotFoundError:
 '''
 
 Window.size = (650, 700) # 設定視窗大小 360:600
-
+button_color = (130/255.0, 217/255.0, 0/255.0, 1) # 設定按鈕顏色
+button_choosed_color = (0/255.0, 121/255.0, 121/255.0, 1) # 設定按鈕被選擇時的顏色
 class User():
     '''
         使用者資訊，提供問卷結果的分級和資料紀錄
@@ -156,6 +157,7 @@ class Home(Screen):
         首頁，將頁面轉至Quesiotion
         :Events:
             `show_record`: ()
+            切換至Record頁面
             顯示最近五次紀錄的圖表
     '''
     def __init__(self):
@@ -237,7 +239,7 @@ class Question(Screen):
             self.ids.send.text = '結果'
         id = 'answer_' + str(value)
         self.reset_button()
-        self.ids[id].background_color = (128/255.0, 42/255.0, 42/255.0, 1)
+        self.ids[id].background_color = (button_choosed_color)
         self.current_answer = value
         user.add_score(self.current_answer, self.current_question)
         
@@ -248,7 +250,7 @@ class Question(Screen):
         self.reset_button()
         print("current_question: %d" %(self.current_question))
         print("len in user scores: %d"%(len(user.scores)))
-        self.ids['answer_' + str(self.current_answer)].background_color = (192/255.0,192/255.0,192/255.0,1)
+        self.ids['answer_' + str(self.current_answer)].background_color = button_color
         if(self.ids.send.text == '結果'):
             print("show_result is working")
             
@@ -261,7 +263,7 @@ class Question(Screen):
                 self.current_question += 1
                 self.ids.name_question.text = questions[self.current_question]
                 try:
-                    self.ids['answer_' + str(user.scores[self.current_question])].background_color = (128/255.0, 42/255.0, 42/255.0, 1)
+                    self.ids['answer_' + str(user.scores[self.current_question])].background_color = (button_choosed_color)
                 except:
                     self.current_answer = None
                 if(len(user.scores) == self.total_question):
@@ -289,7 +291,7 @@ class Question(Screen):
                     self.reset_button()
                     self.current_answer = user.scores[self.current_question]
                     print("goto_previous: current.answer: %d" %(self.current_answer))
-                    self.ids['answer_' + str(self.current_answer)].background_color = (128/255.0, 42/255.0, 42/255.0, 1)
+                    self.ids['answer_' + str(self.current_answer)].background_color = (button_choosed_color)
 
                 except IndexError:
                     print("IndexError of user.scores[%d]" %(self.current_question))
@@ -299,7 +301,7 @@ class Question(Screen):
 
     def reset_button(self):
         for i in range(0, 4):
-            self.ids['answer_' + str(i)].background_color = (192/255.0,192/255.0,192/255.0,1)
+            self.ids['answer_' + str(i)].background_color = button_color
         
     def reset(self):
         self.current_answer = None
